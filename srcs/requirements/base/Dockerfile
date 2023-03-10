@@ -7,6 +7,9 @@ ENV MYNAME="my name"
 RUN mkdir /documents
 WORKDIR /documents
 
+# copy the configuration file
+COPY conf /etc/myconfig.conf
+
 # place the entrypoint script
 RUN mkdir /script
 COPY entrypoint.sh /script
