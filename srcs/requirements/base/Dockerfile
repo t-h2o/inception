@@ -1,5 +1,8 @@
 FROM alpine:3.14
 
+# install package
+RUN apk add --no-cache gettext
+
 # define environment variable
 ENV MYNAME="my name"
 
