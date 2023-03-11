@@ -3,3 +3,9 @@
 ____
 42: https://cdn.intra.42.fr/pdf/pdf/72678/fr.subject.pdf[subject]
 ____
+
+== Create a VM
+
+. `curl -LO` an `archlinux-x86_64.iso`
+. set `bridged adpater` in your virtual machinea
+. launch `install.sh`
