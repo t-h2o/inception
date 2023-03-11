@@ -66,6 +66,31 @@ install_essential_packages () {
 	pacstrap /mnt "$pac"
 }
 
+chroot () {
+	region="Europe"
+	city="Zurich"
+
+	myhostame="panic"
+	myuser="user"
+	mypw="1234"
+
+	ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
+	hwclock --systohc
+
+	echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+	locale-gen
+	echo "LANG=en_US.UTF-8" > /etc/locale.conf
+
+	echo $myhostame > /etc/hostname
+
+	groupadd sudo
+	useradd -m $myuser
+	usermod -aG sudo $myuser
+
+	yes $mypw | passwd
+	yes $mypw | passwd $myuser
+}
+
 main () {
 	printf "partition the disk...\n"
 	partition_the_disk > /dev/null
@@ -78,6 +103,9 @@ main () {
 
 	printf "install essential packages...\n"
 	install_essential_packages > /dev/null
+
+	printf "chroot...\n"
+	chroot > /dev/null
 }
 
 main
