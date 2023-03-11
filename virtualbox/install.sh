@@ -25,9 +25,17 @@ y
 eof
 }
 
+format_the_partitions () {
+	mkswap -L THE_SWAP /dev/sda1
+	mkfs.ext4 -L THE_ROOT /dev/sda2
+}
+
 main () {
 	printf "partition the disk...\n"
 	partition_the_disk > /dev/null
+
+	printf "format the partitions...\n"
+	format_the_partitions > /dev/null
 }
 
 main
