@@ -35,6 +35,37 @@ mount_the_file_systems () {
 	mount /dev/sda2 /mnt
 }
 
+install_essential_packages () {
+	pac="base"
+	pac="$pac base-devel"
+	pac="$pac linux-zen"
+	pac="$pac linux-firmware"
+
+	pac="$pac dosfstools"
+	pac="$pac btrfs-progs"
+	pac="$pac e2fsprogs"
+	pac="$pac lvm2"
+	pac="$pac cryptsetup"
+
+	pac="$pac grub"
+
+	pac="$pac networkmanager"
+
+	pac="$pac git"
+	pac="$pac vim"
+	pac="$pac bat"
+	pac="$pac zsh"
+	pac="$pac tmux"
+	pac="$pac tree"
+	pac="$pac kitty"
+	pac="$pac neofetch"
+
+	pac="$pac man-db"
+	pac="$pac man-pages"
+
+	pacstrap /mnt "$pac"
+}
+
 main () {
 	printf "partition the disk...\n"
 	partition_the_disk > /dev/null
@@ -44,6 +75,9 @@ main () {
 
 	printf "mount the file systems...\n"
 	mount_the_file_systems > /dev/null
+
+	printf "install essential packages...\n"
+	install_essential_packages > /dev/null
 }
 
 main
