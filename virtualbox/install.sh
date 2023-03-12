@@ -91,6 +91,11 @@ chroot () {
 	yes $mypw | passwd $myuser
 }
 
+bootloader () {
+	grub-install --force --target=i386-pc /dev/sda
+	grub-mkconfig -o /boot/grub/grub.cfg
+}
+
 main () {
 	printf "partition the disk...\n"
 	partition_the_disk > /dev/null
@@ -106,6 +111,9 @@ main () {
 
 	printf "chroot...\n"
 	chroot > /dev/null
+
+	printf "set the bootloader...\n"
+	bootloader > /dev/null
 }
 
 main
