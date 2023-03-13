@@ -96,8 +96,10 @@ chroot () {
 }
 
 bootloader () {
-	grub-install --force --target=i386-pc /dev/sda
-	grub-mkconfig -o /boot/grub/grub.cfg
+	arch-chroot /mnt << eof
+grub-install --force --target=i386-pc /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+eof
 }
 
 main () {
