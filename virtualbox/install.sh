@@ -66,6 +66,10 @@ install_essential_packages () {
 	pacstrap /mnt "$pac"
 }
 
+fstab () {
+	genfstab -U /mnt >> /mnt/etc/fstab
+}
+
 chroot () {
 	region="Europe"
 	city="Zurich"
@@ -108,6 +112,9 @@ main () {
 
 	printf "install essential packages...\n"
 	install_essential_packages > /dev/null
+
+	printf "fstab...\n"
+	fstab > /dev/null
 
 	printf "chroot...\n"
 	chroot > /dev/null
