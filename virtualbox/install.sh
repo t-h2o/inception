@@ -88,9 +88,9 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 echo $myhostame > /etc/hostname
 
-groupadd sudo
+groupadd wheel
 useradd -m $myuser
-usermod -aG sudo $myuser
+usermod -aG wheel $myuser
 
 yes $mypw | passwd
 yes $mypw | passwd $myuser
