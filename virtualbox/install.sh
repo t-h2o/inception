@@ -139,6 +139,8 @@ main () {
 
 	printf "enable services...\n"
 	enable_services > /dev/null
+
+	printf "shutdown and reboot without the iso file.\n"
 }
 
 main
