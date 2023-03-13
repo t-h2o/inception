@@ -128,9 +128,6 @@ main () {
 	printf "fstab...\n"
 	fstab > /dev/null
 
-	printf "arch-chroot /mnt...\n"
-	arch-chroot /mnt
-
 	printf "chroot...\n"
 	chroot > /dev/null
 
