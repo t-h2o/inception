@@ -104,6 +104,14 @@ grub-mkconfig -o /boot/grub/grub.cfg
 eof
 }
 
+enable_services () {
+	arch-chroot /mnt << eof
+systemctl enable NetworkManager
+pacman -S openssh
+systemctl enable sshd
+eof
+}
+
 main () {
 	printf "partition the disk...\n"
 	partition_the_disk > /dev/null
@@ -128,6 +136,9 @@ main () {
 
 	printf "set the bootloader...\n"
 	bootloader > /dev/null
+
+	printf "enable services...\n"
+	enable_services > /dev/null
 }
 
 main
