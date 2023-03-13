@@ -107,7 +107,7 @@ eof
 enable_services () {
 	arch-chroot /mnt << eof
 systemctl enable NetworkManager
-pacman -S openssh
+pacman -S --noconfirm openssh
 systemctl enable sshd
 eof
 }
