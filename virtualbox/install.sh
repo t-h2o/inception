@@ -78,21 +78,23 @@ chroot () {
 	myuser="user"
 	mypw="1234"
 
-	ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
-	hwclock --systohc
+	arch-chroot /mnt << eof
+ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
+hwclock --systohc
 
-	echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-	locale-gen
-	echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
-	echo $myhostame > /etc/hostname
+echo $myhostame > /etc/hostname
 
-	groupadd sudo
-	useradd -m $myuser
-	usermod -aG sudo $myuser
+groupadd sudo
+useradd -m $myuser
+usermod -aG sudo $myuser
 
-	yes $mypw | passwd
-	yes $mypw | passwd $myuser
+yes $mypw | passwd
+yes $mypw | passwd $myuser
+eof
 }
 
 bootloader () {
