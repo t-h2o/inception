@@ -63,7 +63,7 @@ install_essential_packages () {
 	pac="$pac man-db"
 	pac="$pac man-pages"
 
-	pacstrap /mnt "$pac"
+	pacstrap /mnt $pac
 }
 
 fstab () {
