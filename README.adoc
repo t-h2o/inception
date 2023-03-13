@@ -8,4 +8,10 @@ ____
 
 . `curl -LO` an `archlinux-x86_64.iso`
 . set `bridged adpater` in your virtual machinea
-. launch `install.sh`
+. launch `install.sh` in the live arch session
++
+[,bash]
+----
+# curl -O https://raw.githubusercontent.com/t-h2o/inception/create-the-vm/virtualbox/install.sh
+# sh install.sh
+----
