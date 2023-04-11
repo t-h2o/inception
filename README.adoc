@@ -3,3 +3,9 @@
 ____
 42: https://cdn.intra.42.fr/pdf/pdf/81796/fr.subject.pdf[subject]
 ____
+
+== Resources
+
+.mariadb
+* https://mariadb.com/kb/en/[Knowledge Base]
+* https://mariadb.com/kb/en/training-tutorials/[tutorials]
