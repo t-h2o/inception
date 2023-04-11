@@ -1,0 +1,21 @@
+---
+services:
+  mariadb:
+    container_name: marrria
+    hostname: marrria
+    build: requirements/mariadb
+    networks:
+      - incepnet
+
+networks:
+  incepnet:
+    driver: bridge
+    name: incepnet
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.42.0.0/30
+          gateway: 172.42.0.1
+    internal: false
+    attachable: false
+...
