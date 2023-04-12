@@ -10,5 +10,7 @@ up:
 down:
 	docker compose -f srcs/docker-compose.yaml down
 
+re: down up
+
 hostname:
 	grep "$(HOSTALIAS)" "$(HOSTSFILE)" || echo "$(HOSTALIAS)" >> "$(HOSTSFILE)"
