@@ -3,6 +3,8 @@ FROM alpine:3.14
 # install package
 RUN apk add --no-cache nginx
 
+RUN mkdir /wordpress
+
 # place the entrypoint script
 RUN mkdir /script
 COPY entrypoint.sh /script

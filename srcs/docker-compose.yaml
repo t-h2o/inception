@@ -17,6 +17,8 @@ services:
       - 80:80
     networks:
       - incepnet
+    volumes:
+      - website:/wordpress
 
   wordpress:
     container_name: philippe
