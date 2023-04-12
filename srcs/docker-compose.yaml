@@ -7,6 +7,15 @@ services:
     networks:
       - incepnet
 
+  nginx:
+    container_name: nemo
+    hostname: nemo
+    build: requirements/nginx
+    ports:
+      - 80:80
+    networks:
+      - incepnet
+
 networks:
   incepnet:
     driver: bridge
@@ -14,7 +23,7 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.42.0.0/30
+        - subnet: 172.42.0.0/29
           gateway: 172.42.0.1
     internal: false
     attachable: false
