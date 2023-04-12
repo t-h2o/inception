@@ -18,6 +18,15 @@ services:
     networks:
       - incepnet
 
+  wordpress:
+    container_name: philippe
+    hostname: philippe
+    build: requirements/wordpress
+    networks:
+      - incepnet
+    volumes:
+      - website:/wordpress
+
 networks:
   incepnet:
     driver: bridge
@@ -29,4 +38,10 @@ networks:
           gateway: 172.42.0.1
     internal: false
     attachable: false
+
+volumes:
+  website:
+    driver: local
+    name: website
+
 ...
