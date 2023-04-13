@@ -8,6 +8,8 @@ services:
     build: requirements/mariadb
     networks:
       - incepnet
+    volumes:
+      - basedata:/var/lib/mysql
 
   nginx:
     container_name: nemo
@@ -46,4 +48,7 @@ volumes:
     driver: local
     name: website
 
+  basedata:
+    driver: local
+    name: basedata
 ...
