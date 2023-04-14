@@ -1,5 +1,7 @@
+include srcs/.env
+
 HOSTSFILE	=	/etc/hosts
-HOSTALIAS	=	127.0.0.1 tgrivel.42.fr
+HOSTALIAS	=	127.0.0.1 $(DOMAIN_NAME)
 
 ps:
 	@docker ps

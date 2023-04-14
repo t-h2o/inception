@@ -15,7 +15,7 @@ else
 	printf "create wordpress database and user...\n"
 	mariadb -u root --password='' << eof
 CREATE DATABASE wordpress;
-GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'philippe.incepnet' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON ${DATABASE_DATABASE}.* TO '${DATABASE_USER_NAME}'@'philippe.incepnet' IDENTIFIED BY '${DATABASE_USER_PASSWORD}';
 FLUSH PRIVILEGES;
 eof
 	printf "wordpress database and user installed...\n"

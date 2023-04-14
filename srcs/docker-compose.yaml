@@ -10,6 +10,11 @@ services:
       - incepnet
     volumes:
       - basedata:/var/lib/mysql
+    environment:
+      - DATABASE_DATABASE=${DATABASE_DATABASE}
+      - DATABASE_USER_NAME=${DATABASE_USER_NAME}
+      - DATABASE_USER_PASSWORD=${DATABASE_USER_PASSWORD}
+      - DATABASE_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
 
   nginx:
     container_name: nemo
