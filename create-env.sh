@@ -28,6 +28,10 @@ DATABASE_USER_PASSWORD=$(pwgen)
 DATABASE_ROOT_PASSWORD=$(pwgen)
 
 HOSTNAME=${HOSTNAME}
+
+WORDPRESS_ADMIN=${LOGIN}
+WORDPRESS_MAIL=${LOGIN}@42lausanne.ch
+WORDPRESS_PASSWORD=$(pwgen)
 eof
 
 ################################################################################

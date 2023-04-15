@@ -36,6 +36,14 @@ services:
       - incepnet
     volumes:
       - website:/wordpress
+    environment:
+      - DATABASE_DATABASE=${DATABASE_DATABASE}
+      - DATABASE_USER_NAME=${DATABASE_USER_NAME}
+      - DATABASE_USER_PASSWORD=${DATABASE_USER_PASSWORD}
+      - WORDPRESS_ADMIN=${WORDPRESS_ADMIN}
+      - WORDPRESS_MAIL=${WORDPRESS_MAIL}
+      - WORDPRESS_PASSWORD=${WORDPRESS_PASSWORD}
+      - DOMAIN_NAME=${DOMAIN_NAME}
 
 networks:
   incepnet:

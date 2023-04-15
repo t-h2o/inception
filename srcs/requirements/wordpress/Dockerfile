@@ -1,6 +1,10 @@
 FROM alpine:3.14
 
 RUN apk add --no-cache \
+  mariadb-client \
+  php7 \
+  php7-phar \
+  php7-fpm \
   php7-fpm \
   php7-common \
   php7-session \
