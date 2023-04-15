@@ -17,3 +17,6 @@ ____
 
 .docker compose
 * https://docs.docker.com/compose/compose-file/compose-file-v3/[Compose file V3]
+
+.nginx
+* https://www.golinuxcloud.com/tutorial-pki-certificates-authority-ocsp/[golinuxcloud.com: Beginners guide on PKI, Certificates, Extensions, CA, CRL and OCSP]

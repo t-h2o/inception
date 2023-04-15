@@ -30,3 +30,19 @@ dnginx -- dwordpress
 
 computer --> vm : ssh user@ip -L 8080:localhost:80
 ....
+
+== SSL
+
+[plantuml, target=assets/ssl, format=svg, width=100%]
+....
+client -> website : request on port 443
+website -> client : give his public key
+note left
+create a random symmetric key
+cipher the symmetric key with the server public key
+end note
+client -> website : send the crypted symmetric key
+note over website, client
+the communication is ciphered by the symmetric key
+end note
+....
