@@ -3,6 +3,10 @@ include srcs/.env
 HOSTSFILE	=	/etc/hosts
 HOSTALIAS	=	127.0.0.1 $(DOMAIN_NAME)
 
+ADOC    =       asciidoctor --require=asciidoctor-diagram
+DOCU    =       docs/README.adoc
+INDEX   =       docs/index.html
+
 ps:
 	@docker ps
 
@@ -16,3 +20,15 @@ re: down up
 
 hostname:
 	grep "$(HOSTALIAS)" "$(HOSTSFILE)" || echo "$(HOSTALIAS)" >> "$(HOSTSFILE)"
+
+doc:
+	@printf "$(YELLOW)Generating documentations..$(DEFAULT)\n"
+	@$(ADOC) $(DOCU) -o $(INDEX)
+
+docdocker:
+	@printf "$(YELLOW)launch the asciidoctor/docker-asciidoctor docker image..$(DEFAULT)\n"
+	@docker run --rm -v $(shell pwd):/documents/ asciidoctor/docker-asciidoctor make doc
+
+base:
+	@make -C $(DBASE)
+	@docker run --rm $(NBASE)

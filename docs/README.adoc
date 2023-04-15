@@ -1,0 +1,32 @@
+= Docker
+:nofooter:
+:toc: left
+
+== Deployment
+
+[plantuml, target=assets/deployment, format=svg, width=100%]
+....
+rectangle computer {
+	rectangle "virtual machine" as vm {
+		rectangle "docker network" as dnetwork {
+			component "docker\nnginx" as dnginx
+			component "docker\nmariadb" as dmariadb
+			component "docker\nphp/wordpress" as dwordpress
+		}
+		database website
+		database database
+		component ".env" as envfile
+		component "docker-compose.yaml" as dockercompose
+	}
+}
+
+website -- dwordpress
+website -- dnginx
+
+database -- dmariadb
+
+dmariadb -- dwordpress
+dnginx -- dwordpress
+
+computer --> vm : ssh user@ip -L 8080:localhost:80
+....
