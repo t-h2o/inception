@@ -34,6 +34,13 @@ RUN mkdir /wordpress
 RUN cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bk
 COPY nginx.conf /etc/nginx/nginx.conf
 
+# SSL
+RUN mkdir /ssl
+
+COPY server.crt /ssl/
+COPY server.csr /ssl/
+COPY server.key /ssl/
+
 # place the entrypoint script
 RUN mkdir /script
 COPY entrypoint.sh /script

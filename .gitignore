@@ -1,2 +1,6 @@
 .env
 .asciidoctor
+cert_ext.cnf
+server.crt
+server.csr
+server.key
