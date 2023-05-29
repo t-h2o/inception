@@ -21,6 +21,9 @@ clean-image:
 	docker image rm inception-image-wordpress
 	docker image rm inception-image-nginx
 
+clean-volume:
+	docker volume rm basedata
+
 re: down up
 
 hostname:
