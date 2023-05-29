@@ -16,6 +16,11 @@ up:
 down:
 	docker compose -f srcs/docker-compose.yaml down
 
+clean-image:
+	docker image rm inception-image-mariadb
+	docker image rm inception-image-wordpress
+	docker image rm inception-image-nginx
+
 re: down up
 
 hostname:
