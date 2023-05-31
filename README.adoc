@@ -19,6 +19,22 @@ sh virtualbox/create_vm.sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/t-h2o/inception/main/virtualbox/install.sh)"
 ----
 
+== Desktop environment
+
+* Install packages
++
+[,bash]
+----
+pacman -S xorg-server xfce4
+----
+
+* Launch the graphic interface
++
+[,bash]
+----
+startxfce4
+----
+
 == Resources
 
 .mariadb
