@@ -23,6 +23,7 @@ clean-image:
 
 clean-volume:
 	docker volume rm basedata
+	docker volume rm website
 
 re: down up
 
