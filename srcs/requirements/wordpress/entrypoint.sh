@@ -2,6 +2,8 @@
 
 # https://wiki.alpinelinux.org/wiki/WordPress#Installing_and_configuring_WordPress
 
+WP_CLI_PATH="/wordpress/wp-cli.phar"
+
 download_wordpress () {
 	cd /wordpress || exit 1
 	wget http://wordpress.org/latest.tar.gz
@@ -13,16 +15,17 @@ download_wordpress () {
 
 install_wp_cli () {
    wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-   chmod +x /wp-cli.phar
+   mv /wp-cli.phar ${WP_CLI_PATH}
+   chmod +x ${WP_CLI_PATH}
 }
 
 setup_wordpress () {
-	/wp-cli.phar core download \
+	${WP_CLI_PATH} core download \
 	--path="/wordpress" \
 	--locale="en_US" \
 	--allow-root
 
-	/wp-cli.phar config create \
+	${WP_CLI_PATH} config create \
 	--path="/wordpress" \
 	--dbname="${DATABASE_DATABASE}" \
 	--dbuser="${DATABASE_USER_NAME}" \
@@ -30,7 +33,7 @@ setup_wordpress () {
 	--dbpass="${DATABASE_USER_PASSWORD}" \
 	--allow-root
 
-	/wp-cli.phar  core install \
+	${WP_CLI_PATH}  core install \
 	--path="/wordpress" \
 	--url="${DOMAIN_NAME}" \
 	--title="Example" \
