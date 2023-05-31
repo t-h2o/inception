@@ -35,6 +35,20 @@ pacman -S xorg-server xfce4
 startxfce4
 ----
 
+== Connection to the database
+
+. enter into the wordpress container
+. connect to the database
++
+[,bash]
+----
+mysql \
+  --user=${DATABASE_USER_NAME} \
+  --password=${DATABASE_USER_PASSWORD} \
+  --host=inception-container-mariadb \
+  ${DATABASE_DATABASE}
+----
+
 == Resources
 
 .mariadb
