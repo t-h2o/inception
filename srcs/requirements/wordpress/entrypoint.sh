@@ -26,7 +26,7 @@ setup_wordpress () {
 	--path="/wordpress" \
 	--dbname="${DATABASE_DATABASE}" \
 	--dbuser="${DATABASE_USER_NAME}" \
-	--dbhost="marrria" \
+	--dbhost="inception-container-mariadb" \
 	--dbpass="${DATABASE_USER_PASSWORD}" \
 	--allow-root
 

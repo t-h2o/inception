@@ -4,8 +4,8 @@ build:
 	docker build -t $(NAME) .
 
 test:
-	docker run --rm -d -p 80:80 --name nemo $(NAME)
-	docker exec -it nemo ip a
+	docker run --rm -d -p 80:80 --name inception-container-nginx $(NAME)
+	docker exec -it inception-container-nginx ip a
 
 stop:
-	docker stop nemo
+	docker stop inception-container-nginx

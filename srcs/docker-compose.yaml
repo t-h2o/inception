@@ -3,9 +3,9 @@ version: "3.9"
 
 services:
   mariadb:
-    container_name: marrria
+    container_name: inception-container-mariadb
     image: inception-image-mariadb
-    hostname: marrria
+    hostname: inception-container-mariadb
     build: requirements/mariadb
     networks:
       - incepnet
@@ -18,9 +18,9 @@ services:
       - DATABASE_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
 
   nginx:
-    container_name: nemo
+    container_name: inception-container-nginx
     image: inception-image-nginx
-    hostname: nemo
+    hostname: inception-container-nginx
     build: requirements/nginx
     ports:
       - 80:80
@@ -31,9 +31,9 @@ services:
       - website:/wordpress
 
   wordpress:
-    container_name: philippe
+    container_name: inception-container-wordpress
     image: inception-image-wordpress
-    hostname: philippe
+    hostname: inception-container-wordpress
     build: requirements/wordpress
     networks:
       - incepnet
