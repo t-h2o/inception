@@ -29,7 +29,7 @@ setup_wordpress () {
 	--path="/wordpress" \
 	--dbname="${DATABASE_DATABASE}" \
 	--dbuser="${DATABASE_USER_NAME}" \
-	--dbhost="inception-container-mariadb" \
+	--dbhost="${CONTAINER_MARIADB}" \
 	--dbpass="${DATABASE_USER_PASSWORD}" \
 	--extra-php \
 	--allow-root <<- PHP

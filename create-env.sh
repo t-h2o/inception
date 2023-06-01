@@ -5,6 +5,14 @@ HOSTNAME=$(cat /etc/hostname)
 LOGIN="$(whoami)"
 DOMAIN_NAME=${LOGIN}.42.fr
 
+CONTAINER_NGINX="inception-container-nginx"
+CONTAINER_WORDPRESS="inception-container-wordpress"
+CONTAINER_MARIADB="inception-container-mariadb"
+
+IMAGE_NGINX="inception-image-nginx"
+IMAGE_WORDPRESS="inception-image-wordpress"
+IMAGE_MARIADB="inception-image-mariadb"
+
 if ! hash pwgen 2> /dev/null ; then
 	printf "pwgen is not installed\n"
 	exit 1
@@ -21,6 +29,14 @@ fi
 alias pwgen="pwgen --ambiguous --capitalize --secure 20 1"
 
 cat > ${ENVIRONMENT_FILE} << eof
+CONTAINER_NGINX=${CONTAINER_NGINX}
+CONTAINER_WORDPRESS=${CONTAINER_WORDPRESS}
+CONTAINER_MARIADB=${CONTAINER_MARIADB}
+
+IMAGE_NGINX=${IMAGE_NGINX}
+IMAGE_WORDPRESS=${IMAGE_WORDPRESS}
+IMAGE_MARIADB=${IMAGE_MARIADB}
+
 DOMAIN_NAME=${DOMAIN_NAME}
 
 DATABASE_DATABASE=wordpress

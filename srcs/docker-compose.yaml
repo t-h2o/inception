@@ -3,8 +3,8 @@ version: "3.9"
 
 services:
   mariadb:
-    container_name: inception-container-mariadb
-    image: inception-image-mariadb
+    container_name: ${CONTAINER_MARIADB}
+    image: ${IMAGE_MARIADB}
     hostname: inception-container-mariadb
     build: requirements/mariadb
     networks:
@@ -12,14 +12,15 @@ services:
     volumes:
       - basedata:/var/lib/mysql
     environment:
+      - CONTAINER_WORDPRESS=${CONTAINER_WORDPRESS}
       - DATABASE_DATABASE=${DATABASE_DATABASE}
       - DATABASE_USER_NAME=${DATABASE_USER_NAME}
       - DATABASE_USER_PASSWORD=${DATABASE_USER_PASSWORD}
       - DATABASE_ROOT_PASSWORD=${DATABASE_ROOT_PASSWORD}
 
   nginx:
-    container_name: inception-container-nginx
-    image: inception-image-nginx
+    container_name: ${CONTAINER_NGINX}
+    image: ${IMAGE_NGINX}
     hostname: inception-container-nginx
     build: requirements/nginx
     ports:
@@ -30,11 +31,12 @@ services:
     volumes:
       - website:/wordpress
     environment:
+      - CONTAINER_WORDPRESS=${CONTAINER_WORDPRESS}
       - DOMAIN_NAME=${DOMAIN_NAME}
 
   wordpress:
-    container_name: inception-container-wordpress
-    image: inception-image-wordpress
+    container_name: ${CONTAINER_WORDPRESS}
+    image: ${IMAGE_WORDPRESS}
     hostname: inception-container-wordpress
     build: requirements/wordpress
     networks:
@@ -42,6 +44,7 @@ services:
     volumes:
       - website:/wordpress
     environment:
+      - CONTAINER_MARIADB=${CONTAINER_MARIADB}
       - DATABASE_DATABASE=${DATABASE_DATABASE}
       - DATABASE_USER_NAME=${DATABASE_USER_NAME}
       - DATABASE_USER_PASSWORD=${DATABASE_USER_PASSWORD}

@@ -17,9 +17,9 @@ down:
 	docker compose -f srcs/docker-compose.yaml down
 
 clean-image:
-	docker image rm inception-image-mariadb || true
-	docker image rm inception-image-wordpress || true
-	docker image rm inception-image-nginx || true
+	docker image rm ${IMAGE_NGINX} || true
+	docker image rm ${IMAGE_WORDPRESS} || true
+	docker image rm ${IMAGE_MARIADB} || true
 
 clean-volume:
 	docker volume rm basedata || true
