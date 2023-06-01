@@ -35,7 +35,7 @@ setup_wordpress () {
 
 	${WP_CLI_PATH}  core install \
 	--path="/wordpress" \
-	--url="${DOMAIN_NAME}" \
+	--url="${WORDPRESS_URL}" \
 	--title="Example" \
 	--admin_user="${WORDPRESS_ADMIN}" \
 	--admin_password="${WORDPRESS_PASSWORD}" \

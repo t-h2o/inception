@@ -3,6 +3,7 @@
 ENVIRONMENT_FILE="srcs/.env"
 HOSTNAME=$(cat /etc/hostname)
 LOGIN="$(whoami)"
+DOMAIN_NAME=${LOGIN}.42.fr
 
 if ! hash pwgen 2> /dev/null ; then
 	printf "pwgen is not installed\n"
@@ -20,7 +21,7 @@ fi
 alias pwgen="pwgen --ambiguous --capitalize --secure 20 1"
 
 cat > ${ENVIRONMENT_FILE} << eof
-DOMAIN_NAME=${LOGIN}.42.fr
+DOMAIN_NAME=${DOMAIN_NAME}
 
 DATABASE_DATABASE=wordpress
 DATABASE_USER_NAME=wordpress
@@ -32,6 +33,7 @@ HOSTNAME=${HOSTNAME}
 WORDPRESS_ADMIN=${LOGIN}
 WORDPRESS_MAIL=${LOGIN}@42lausanne.ch
 WORDPRESS_PASSWORD=$(pwgen)
+WORDPRESS_URL=https://${DOMAIN_NAME}/
 eof
 
 ################################################################################
