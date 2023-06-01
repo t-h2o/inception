@@ -31,7 +31,11 @@ setup_wordpress () {
 	--dbuser="${DATABASE_USER_NAME}" \
 	--dbhost="inception-container-mariadb" \
 	--dbpass="${DATABASE_USER_PASSWORD}" \
-	--allow-root
+	--extra-php \
+	--allow-root <<- PHP
+	define( 'WP_HOME', '${WORDPRESS_URL}' );
+	define( 'WP_SITEURL',  '${WORDPRESS_URL}');
+	PHP
 
 	${WP_CLI_PATH}  core install \
 	--path="/wordpress" \
