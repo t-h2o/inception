@@ -5,24 +5,24 @@ partition_the_disk () {
 	# create two partitions
 	# 1 swap
 	# 2 linux filesystem
-	gdisk /dev/sda << eof
-o
-y
-n
+	gdisk /dev/sda <<- eof
+	o
+	y
+	n
 
 
-+1GiB
-8200
-p
-n
+	+1GiB
+	8200
+	p
+	n
 
 
 
-8300
-p
-w
-y
-eof
+	8300
+	p
+	w
+	y
+	eof
 }
 
 format_the_partitions () {
@@ -73,50 +73,50 @@ chroot () {
 	myhostame="panic"
 	mypw="1234"
 
-	arch-chroot /mnt << eof
-ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
-hwclock --systohc
+	arch-chroot /mnt <<- eof
+	ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
+	hwclock --systohc
 
-echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
-locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
+	echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+	locale-gen
+	echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
-echo $myhostame > /etc/hostname
+	echo $myhostame > /etc/hostname
 
-groupadd wheel
-useradd -m $myuser
-usermod -aG wheel $myuser
+	groupadd wheel
+	useradd -m $myuser
+	usermod -aG wheel $myuser
 
-yes $mypw | passwd
-yes $mypw | passwd $myuser
+	yes $mypw | passwd
+	yes $mypw | passwd $myuser
 
-EDITOR="sed -i 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/  %wheel ALL=(ALL:ALL) NOPASSWD: ALL/'" visudo
-eof
+	EDITOR="sed -i 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/  %wheel ALL=(ALL:ALL) NOPASSWD: ALL/'" visudo
+	eof
 }
 
 bootloader () {
-	arch-chroot /mnt << eof
-grub-install --force --target=i386-pc /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
-eof
+	arch-chroot /mnt <<- eof
+	grub-install --force --target=i386-pc /dev/sda
+	grub-mkconfig -o /boot/grub/grub.cfg
+	eof
 }
 
 enable_services () {
-	arch-chroot /mnt << eof
-pacman -S --noconfirm openssh docker docker-compose ansible
-systemctl enable sshd
-systemctl enable docker
-systemctl enable NetworkManager
-usermod -aG docker ${myuser}
-su ${myuser}
-cd
-git clone https://github.com/t-h2o/inception
-git clone https://github.com/t-h2o/ansible-my-conf
-ssh-keygen -t ed25519 -f /home/${myuser}/.ssh/id_ed25519 -P ""
-cat /etc/ssh/ssh_host_ed25519_key.pub >> /home/${myuser}/.ssh/known_hosts
-cat /home/${myuser}/.ssh/id_ed25519.pub >> /home/${myuser}/.ssh/authorized_keys
-exit
-eof
+	arch-chroot /mnt <<- eof
+	pacman -S --noconfirm openssh docker docker-compose ansible
+	systemctl enable sshd
+	systemctl enable docker
+	systemctl enable NetworkManager
+	usermod -aG docker ${myuser}
+	su ${myuser}
+	cd
+	git clone https://github.com/t-h2o/inception
+	git clone https://github.com/t-h2o/ansible-my-conf
+	ssh-keygen -t ed25519 -f /home/${myuser}/.ssh/id_ed25519 -P ""
+	cat /etc/ssh/ssh_host_ed25519_key.pub >> /home/${myuser}/.ssh/known_hosts
+	cat /home/${myuser}/.ssh/id_ed25519.pub >> /home/${myuser}/.ssh/authorized_keys
+	exit
+	eof
 }
 
 ask_user_name () {
