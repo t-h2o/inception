@@ -11,7 +11,7 @@ VM_PATH="${HOME}/goinfre/my_vm_created_by_cli"
 VM_NAME="vmCreatedByCLI"
 VDI_FILE="${VM_PATH}/Archlinux_64.vdi"
 ARCHISO_FILE="${VM_PATH}/archlinux_bootable.iso"
-ARCHISO_VERSION="2023.03.01"
+ARCHISO_VERSION="$(date +"%Y.%m.01")"
 
 create_vm () {
 	VBoxManage createvm --name "${VM_NAME}" --basefolder="${VM_PATH}" --ostype Archlinux_64 --register
