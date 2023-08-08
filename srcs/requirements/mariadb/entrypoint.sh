@@ -14,7 +14,7 @@ if mariadb-show | grep wordpress>/dev/null ; then
 else
 	printf "create wordpress database and user...\n"
 	mariadb -u root --password='' << eof
-CREATE DATABASE wordpress;
+CREATE DATABASE ${DATABASE_DATABASE};
 GRANT ALL PRIVILEGES ON ${DATABASE_DATABASE}.* TO '${DATABASE_USER_NAME}'@'${CONTAINER_WORDPRESS}.incepnet' IDENTIFIED BY '${DATABASE_USER_PASSWORD}';
 FLUSH PRIVILEGES;
 eof
