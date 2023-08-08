@@ -13,6 +13,9 @@ ps:
 up:
 	docker compose -f srcs/docker-compose.yaml up --detach --build
 
+build:
+	docker compose -f srcs/docker-compose.yaml build
+
 down:
 	docker compose -f srcs/docker-compose.yaml down
 
