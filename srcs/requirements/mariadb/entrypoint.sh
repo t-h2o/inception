@@ -1,33 +1,30 @@
-#!/bin/sh
+#!/bin/bash
 
-set -m # Enable Job Control
+set -m
 
-mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 mariadbd -u mysql &
 
-sleep 1 # to be sure the deamon is launched, not the better pratice... to improve
+while ! mariadb-admin ping > /dev/null 2> /dev/null
+do
+	echo "mariadb isn't already alive; so sleep just 1 seconde..."
+	sleep 1
+done
 
-printf "mariadbd launched\n"
+if [ ! -d "/var/lib/mysql/wordpress/" ]
+then
 
-if mariadb-show | grep wordpress>/dev/null ; then
-	printf "wordpress database and user already installed...\n"
+	printf "\"/var/lib/mysql/wordpress/\" does not exist"
+
+	mariadb <<- eof
+	CREATE DATABASE ${DATABASE_DATABASE};
+	GRANT ALL PRIVILEGES ON ${DATABASE_DATABASE}.* TO '${DATABASE_USER_NAME}'@'${CONTAINER_WORDPRESS}.incepnet' IDENTIFIED BY '${DATABASE_USER_PASSWORD}';
+	FLUSH PRIVILEGES;
+	eof
+
 else
-	printf "create wordpress database and user...\n"
-	mariadb -u root --password='' << eof
-CREATE DATABASE ${DATABASE_DATABASE};
-GRANT ALL PRIVILEGES ON ${DATABASE_DATABASE}.* TO '${DATABASE_USER_NAME}'@'${CONTAINER_WORDPRESS}.incepnet' IDENTIFIED BY '${DATABASE_USER_PASSWORD}';
-FLUSH PRIVILEGES;
-eof
-	printf "wordpress database and user installed...\n"
+
+	printf "\"/var/lib/mysql/wordpress/\" exists"
+
 fi
 
-fg
-
-# into another bash session,
-# connect into the DB,
-#
-# apply these commands:
-# CREATE DATABASE wordpress;
-# GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'${CONTAINER_WORDPRESS}.incepnet' IDENTIFIED BY '1234';
-# FLUSH PRIVILEGES;
-# EXIT
+fg %1
