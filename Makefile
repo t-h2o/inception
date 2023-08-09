@@ -11,7 +11,7 @@ ps:
 	@docker ps
 
 up:
-	docker compose -f srcs/docker-compose.yaml up --detach --build
+	docker compose -f srcs/docker-compose.yaml up --build
 
 build:
 	docker compose -f srcs/docker-compose.yaml build
