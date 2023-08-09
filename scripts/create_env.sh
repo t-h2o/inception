@@ -20,7 +20,7 @@ fi
 
 if [ -f ${ENVIRONMENT_FILE} ]; then
 	printf "the .env file already exist, replace it ?\n[Y/n]: "
-	read answer
+	read -r answer
 	if [ "${answer}" == "n" ]; then
 		exit 0
 	fi

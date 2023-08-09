@@ -121,7 +121,7 @@ enable_services () {
 
 ask_user_name () {
 	printf "username: "
-	read myuser
+	read -r myuser
 
 	if [ "$(echo ${myuser} | wc -w)" -ne 1 ]; then
 		printf "not valid username\n"

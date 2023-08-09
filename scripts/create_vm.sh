@@ -54,7 +54,7 @@ start_vm () {
 # $1: step name
 step_menu () {
 	echo "$1"
-	printf "jump [y/N/exit]: "; read answer
+	printf "jump [y/N/exit]: "; read -r answer
 	if [ "${answer}" == "" ]; then
 		echo "continue"
 		return 0
@@ -118,7 +118,7 @@ setup_the_vm () {
 }
 
 main_menu () {
-	printf "main menu:\n1: setup the vm\n2: list vms\n3: exit\n4: start the vm\n5: generate info-vm.txt\n6: remove archlinux iso\n7: delete the vm\n[1-7]: "; read answer
+	printf "main menu:\n1: setup the vm\n2: list vms\n3: exit\n4: start the vm\n5: generate info-vm.txt\n6: remove archlinux iso\n7: delete the vm\n[1-7]: "; read -r answer
 	if [ "${answer}" == "1" ]; then
 		return 1
 	elif [ "${answer}" == "2" ]; then
