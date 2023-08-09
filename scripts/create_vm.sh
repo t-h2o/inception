@@ -74,44 +74,31 @@ setup_the_vm () {
 	# generate the folder
 	mkdir -p "${VM_PATH}"
 
-	step_menu "create the vm"
-
-	# create the vm
-	if [ $? -eq 0 ]; then
+	if step_menu "create the vm" ; then
 		create_vm
 	fi
 
-	step_menu "download_archlinux_iso"
-
 	# download GNU/Linux iso
-	if [ $? -eq 0 ]; then
+	if step_menu "download_archlinux_iso" ; then
 		download_archlinux_iso
 	fi
 
-	step_menu "attach_archlinux_iso"
-
 	# set a bootable image
-	if [ $? -eq 0 ]; then
+	if step_menu "attach_archlinux_iso" ; then
 		attach_archlinux_iso
 	fi
 
-	step_menu "create_vdi"
-
 	# create a vdi
-	if [ $? -eq 0 ]; then
+	if step_menu "create_vdi" ; then
 		create_vdi
 	fi
 
-	step_menu "create_vm_sata"
-
 	# create a sata
-	if [ $? -eq 0 ]; then
+	if step_menu "create_vm_sata" ; then
 		create_vm_sata
 	fi
 
-	step_menu "start_vm"
-
-	if [ $? -eq 0 ]; then
+	if step_menu "start_vm" ; then
 		start_vm
 	fi
 
