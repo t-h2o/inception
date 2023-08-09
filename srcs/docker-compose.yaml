@@ -10,7 +10,7 @@ services:
     networks:
       - incepnet
     volumes:
-      - /home/${WORDPRESS_ADMIN}/data/mysql:/var/lib/mysql
+      - basedata:/var/lib/mysql
     environment:
       - CONTAINER_WORDPRESS=${CONTAINER_WORDPRESS}
       - DATABASE_DATABASE=${DATABASE_DATABASE}
@@ -29,7 +29,7 @@ services:
     networks:
       - incepnet
     volumes:
-      - /home/${WORDPRESS_ADMIN}/data/wordpress:/wordpress
+      - website:/wordpress
     environment:
       - CONTAINER_WORDPRESS=${CONTAINER_WORDPRESS}
       - DOMAIN_NAME=${DOMAIN_NAME}
@@ -42,7 +42,7 @@ services:
     networks:
       - incepnet
     volumes:
-      - /home/${WORDPRESS_ADMIN}/data/wordpress:/wordpress
+      - website:/wordpress
     environment:
       - CONTAINER_MARIADB=${CONTAINER_MARIADB}
       - DATABASE_DATABASE=${DATABASE_DATABASE}
@@ -64,4 +64,13 @@ networks:
           gateway: 172.42.0.1
     internal: false
     attachable: false
+
+volumes:
+  website:
+    driver: local
+    name: website
+
+  basedata:
+    driver: local
+    name: basedata
 ...
