@@ -10,13 +10,13 @@ ____
 +
 [,bash]
 ----
-sh virtualbox/create_vm.sh
+sh scripts/create_vm.sh
 ----
 . into the vm launch this
 +
 [,bash]
 ----
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/t-h2o/inception/main/virtualbox/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/t-h2o/inception/main/scripts/live_install_arch.sh)"
 ----
 
 == Desktop environment
