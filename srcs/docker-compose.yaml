@@ -69,8 +69,16 @@ volumes:
   website:
     driver: local
     name: website
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '${HOME}/data/wordpress'
 
   basedata:
     driver: local
     name: basedata
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '${HOME}/data/mysql'
 ...

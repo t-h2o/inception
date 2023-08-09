@@ -11,6 +11,8 @@ ps:
 	@docker ps
 
 up:
+	mkdir -p /home/$(shell whoami)/data/wordpress
+	mkdir -p /home/$(shell whoami)/data/mysql
 	docker compose -f srcs/docker-compose.yaml up --build
 
 build:
