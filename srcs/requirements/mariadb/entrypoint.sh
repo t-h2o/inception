@@ -10,10 +10,10 @@ do
 	sleep 1
 done
 
-if [ ! -d "/var/lib/mysql/wordpress/" ]
+if [ ! -d "/var/lib/mysql/${DATABASE_DATABASE}/" ]
 then
 
-	printf "\"/var/lib/mysql/wordpress/\" does not exist"
+	printf "\"/var/lib/mysql/${DATABASE_DATABASE}/\" does not exist"
 
 	mariadb <<- eof
 	CREATE DATABASE ${DATABASE_DATABASE};
@@ -23,7 +23,7 @@ then
 
 else
 
-	printf "\"/var/lib/mysql/wordpress/\" exists"
+	printf "\"/var/lib/mysql/${DATABASE_DATABASE}/\" exists"
 
 fi
 
