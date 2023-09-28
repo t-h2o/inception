@@ -6,15 +6,27 @@ ____
 
 == Create a VM
 
-. launch my interactive menu using the "create_vm" script located in the "scripts" folder
-(you may need to change the path in the following command)
+. launch my interactive menu using the *_create_vm.sh_* script (located in the "scripts" folder)
 +
 [,bash]
 ----
 sh scripts/create_vm.sh
 ----
+ 
+. the interactive menu looks like this :
++
+[,bash]
+----
+main menu:
+1: setup the vm
+2: list vms
+3: exit
+4: start the vm
+5: generate info-vm.txt
+6: remove archlinux iso
+7: delete the vm
+----
 
-. 
 . once in the vm, launch the following command to setup the environment
 +
 [,bash]
