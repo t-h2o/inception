@@ -6,13 +6,16 @@ ____
 
 == Create a VM
 
-. launch my interactive menu
+. launch my interactive menu using the "create_vm" script located in the "scripts" folder
+(you may need to change the path in the following command)
 +
 [,bash]
 ----
 sh scripts/create_vm.sh
 ----
-. into the vm launch this
+
+. 
+. once in the vm, launch the following command to setup the environment
 +
 [,bash]
 ----
