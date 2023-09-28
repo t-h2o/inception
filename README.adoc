@@ -27,14 +27,20 @@ main menu:
 7: delete the vm
 ----
 
-. select the first option to begin the setup of a new VM
+. select the first option to begin the setup of a new VM and follow the steps
 
-you can skip each step if needed
-* `*_create the vm_*` will create the .vbox file which contains the settings needed by VirtualBox to create the VM
-* `*_download_archlinux_iso_*` will download and place an archlinux disk image (.iso) in the _my_vm_created_by_cli/_ folder
-* `*_attach_archlinux_iso_*` will "plug" the .iso as you would do with a bootable device to allow the VM to boot using it
-* `*_create_vdi_*` will create the _virtual disk image_ (.vdi) file where the VM is created
-* `*_create_vm_sata_*` creates the sata drive for the VM
+  you can skip each step if you know what you are doing
+
+** `*_create the vm_*` creates the .vbox file which contains the settings needed by VirtualBox to create the VM
+** `*_download_archlinux_iso_*` downloads and place an archlinux disk image (.iso) in the _my_vm_created_by_cli/_ folder
+** `*_attach_archlinux_iso_*` will "plug" the .iso as you would do with a bootable device to allow the VM to boot using it
+** `*_create_vdi_*` creates the _virtual disk image_ (.vdi) file where the VM is created
+** `*_create_vm_sata_*` creates the sata drive for the VM
+** `*_start_vm_*` will do what it should do
+** The following error should appear, just hit _Change Network Settings_ and hit _OK_ (default options should be fine)
+
+image::images/error_net.png[,250]
+image::images/net_ok.png[,250]
 
 . once in the vm, launch the following command to setup the environment
 +
