@@ -54,7 +54,7 @@ start_vm () {
 # $1: step name
 step_menu () {
 	echo "$1"
-	printf "skip this step? [y/N/exit] (default = N): "; read answer
+	printf "skip this step? [y/N/exit]"; read answer
 	if [ "${answer}" == "" ]; then
 		echo "continue"
 		return 0
