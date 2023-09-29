@@ -12,10 +12,11 @@ ____
 ----
 sh scripts/create_vm.sh
 ----
- 
-. the interactive menu looks like this :
 +
-[,bash]
+NOTE: You can just relaunch the script to get to the menu at any point
++
+You will end up with this :
++
 ----
 main menu:
 1: setup the vm
@@ -27,9 +28,9 @@ main menu:
 7: delete the vm
 ----
 
-. select the first option to begin the setup of a new VM and follow the steps
+. Select the first option to begin the setup of a new VM and follow the steps
 +
-NOTE: you can skip each step if you know what you are doing
+NOTE: You can skip each step if you know what you are doing
 
 ** `*_create the vm_*` creates the .vbox file which contains the settings needed by VirtualBox to create the VM
 ** `*_download_archlinux_iso_*` downloads and place an archlinux disk image (.iso) in the _my_vm_created_by_cli/_ folder
@@ -44,15 +45,42 @@ image:images/net_ok.png[,250]
 image:images/boot_screen.png[,250]
 image:images/VM_running.png[,250]
 
-. It can be good idea at this point to setup an SSH connection
-.. J'ai oublie comment on fait
+. It can be good idea, at this point, to setup an SSH connection :
+.. Find the ip address of the machine. You can use the following command :
++
+[,bash]
+----
+ip a
+----
++
+The `_a_` stands for _address_. This will display information about all network interfaces, your ip address is somewhere here.
+.. Set your root user password with :
++
+[,bash]
+----
+passwd
+----
++
+the default password in the VM will be _1234_
 
-. once in the vm, launch the following command to setup the environment
+.. Create the SSH connection using the root username and ip address :
++
+[,bash]
+----
+ssh root@{IP_ADRESS}
+----
+
+. Once in the vm, launch the following command to setup the environment
 +
 [,bash]
 ----
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/t-h2o/inception/main/scripts/live_install_arch.sh)"
 ----
+
+. Go back to the interactive menu and select `*_6: remove archlinux iso_*`
++
+This will "unplug" the iso to avoid the previous installation process when starting up the vm
+
 
 == Desktop environment
 
