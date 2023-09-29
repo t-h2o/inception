@@ -28,7 +28,7 @@ main menu:
 ----
 
 . select the first option to begin the setup of a new VM and follow the steps
-
++
 NOTE: you can skip each step if you know what you are doing
 
 ** `*_create the vm_*` creates the .vbox file which contains the settings needed by VirtualBox to create the VM
