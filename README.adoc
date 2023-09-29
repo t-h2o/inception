@@ -29,7 +29,7 @@ main menu:
 
 . select the first option to begin the setup of a new VM and follow the steps
 
-  you can skip each step if you know what you are doing
+NOTE: you can skip each step if you know what you are doing
 
 ** `*_create the vm_*` creates the .vbox file which contains the settings needed by VirtualBox to create the VM
 ** `*_download_archlinux_iso_*` downloads and place an archlinux disk image (.iso) in the _my_vm_created_by_cli/_ folder
