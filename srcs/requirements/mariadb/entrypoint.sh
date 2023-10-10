@@ -6,7 +6,7 @@ mariadbd -u mysql &
 
 while ! mariadb-admin ping > /dev/null 2> /dev/null
 do
-	echo "mariadb isn't already alive; so sleep just 1 seconde..."
+	echo "mariadbd isn't already alive; so sleep just 1 seconde..."
 	sleep 1
 done
 
