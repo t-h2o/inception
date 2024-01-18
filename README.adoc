@@ -6,18 +6,81 @@ ____
 
 == Create a VM
 
-. launch my interactive menu
+. launch my interactive menu using the *_create_vm.sh_* script (located in the "scripts" folder)
 +
 [,bash]
 ----
 sh scripts/create_vm.sh
 ----
-. into the vm launch this
++
+NOTE: You can just relaunch the script to get to the menu at any point
++
+You will end up with this :
++
+----
+main menu:
+1: setup the vm
+2: list vms
+3: exit
+4: start the vm
+5: generate info-vm.txt
+6: remove archlinux iso
+7: delete the vm
+----
+
+. Select the first option to begin the setup of a new VM and follow the steps
++
+NOTE: You can skip each step if you know what you are doing
+
+** `*_create the vm_*` creates the .vbox file which contains the settings needed by VirtualBox to create the VM
+** `*_download_archlinux_iso_*` downloads and place an archlinux disk image (.iso) in the _my_vm_created_by_cli/_ folder
+** `*_attach_archlinux_iso_*` will "plug" the .iso as you would do with a bootable device to allow the VM to boot using it
+** `*_create_vdi_*` creates the _virtual disk image_ (.vdi) file where the VM is created
+** `*_create_vm_sata_*` creates the sata drive for the VM
+** `*_start_vm_*` will do what it should do
+** The following error should appear, just hit _Change Network Settings_ and hit _OK_ (default options should be fine) +
+image:images/error_net.png[,250]
+image:images/net_ok.png[,250]
+** boot up the VM +
+image:images/boot_screen.png[,250]
+image:images/VM_running.png[,250]
+
+. It can be good idea, at this point, to setup an SSH connection :
+.. Find the ip address of the machine. You can use the following command :
++
+[,bash]
+----
+ip a
+----
++
+The `_a_` stands for _address_. This will display information about all network interfaces, your ip address is somewhere here.
+.. Set your root user password with :
++
+[,bash]
+----
+passwd
+----
++
+the default password in the VM will be _1234_
+
+.. Create the SSH connection using the root username and ip address :
++
+[,bash]
+----
+ssh root@{IP_ADRESS}
+----
+
+. Once in the vm, launch the following command to setup the environment
 +
 [,bash]
 ----
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/t-h2o/inception/main/scripts/live_install_arch.sh)"
 ----
+
+. Go back to the interactive menu and select `*_6: remove archlinux iso_*`
++
+This will "unplug" the iso to avoid the previous installation process when starting up the vm
+
 
 == Desktop environment
 
